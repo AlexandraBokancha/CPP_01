@@ -1,10 +1,13 @@
 #include "Sed.hpp"
-// std::string::replace is forbidden 
 
 int main(int ac, char **av)
 {
-    (void)av;
-    if (ac == 4)
-        std::cout << "im good";
+    if (ac != 4)
+    {
+        std::cerr << "Wrong number of arguments" << std::endl;
+        return (-1);
+    }
+    Sed sed(av[1]);
+    sed.replace(av[2], av[3]);     
     return (0);
 };
