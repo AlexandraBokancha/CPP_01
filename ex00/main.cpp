@@ -2,15 +2,14 @@
 
 int	main(void)
 {
+	std::string	name;
 
-	Zombie myZombie("stack");
-
-	myZombie.announce();
-	
-	Zombie *pointZombie;
-	
-	pointZombie = newZombie("heap");
-	pointZombie->announce();
-	delete pointZombie;
+	std::cout << "Choose a name for you stackZombie : " << std::endl;
+	std::cin >> name;
+	randomChump(name);
+	std::cout << "Choose a name for you heapZombie : " << std::endl;
+	std::cin >> name;
+	Zombie *pZombie = newZombie(name);
+	delete pZombie;
 	return (0);
 };

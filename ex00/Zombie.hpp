@@ -3,20 +3,29 @@
 #include <cstring>
 #include <iostream>
 #include <new> // new and delete operators;
-#include "Zombie.h"
 
 class	Zombie{
-	
 	private:
 		std::string	_name;
 	public :
-		Zombie( std::string _name );
+	
+		/* Constuctor */
+		Zombie( std::string name );
+		
+		/* Destructor */
+		~Zombie( void );
+		
 		void	announce( void );
-
-	/* The destructor must print a message with 
-	the name of the zombie for debugging purposes.*/
-	~Zombie( void );
-
 };
+
+/* It creates a zombie, name it, and return it 
+so you can use it outside of the function scope (we should use heap for
+this purpose) */
+
+Zombie*	newZombie( std::string name );
+	
+/* It creates a zombie, name it, and the zombie announces itself. */
+
+void	randomChump( std::string name );
 
 #endif

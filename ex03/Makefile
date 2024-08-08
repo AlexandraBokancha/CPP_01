@@ -1,13 +1,13 @@
-NAME = zombie
+NAME = weapon
 
 CC = clang++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 SRCS = 	main.cpp \
-		newZombie.cpp \
-		Zombie.cpp \
-		randomChump.cpp
+		Weapon.cpp \
+		HumanA.cpp \
+		HumanB.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

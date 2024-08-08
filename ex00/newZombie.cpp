@@ -3,8 +3,8 @@
 Zombie*	newZombie( std::string name )
 {
 	Zombie	*pointZ;
-	
-	pointZ = NULL;
+
 	pointZ = new Zombie(name);
+	pointZ->announce();
 	return (pointZ);
 };

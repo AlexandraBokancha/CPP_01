@@ -1,13 +1,10 @@
-NAME = zombie
+NAME = brain
 
 CC = clang++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
-SRCS = 	main.cpp \
-		newZombie.cpp \
-		Zombie.cpp \
-		randomChump.cpp
+SRCS = 	main.cpp 
 
 OBJS = $(SRCS:.cpp=.o)
 
