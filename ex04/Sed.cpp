@@ -7,26 +7,34 @@ Sed::Sed( std::string filename ){
     std::cout << "oufile name is: " << this->_outFile << std::endl;
 }
 
-
 // npos = until the end of the string
-// std::string::replace is forbidden 
+// peek = lire le prochain caractere sans deplacer le curseur
 
-void    Sed::replace( std::string searchWord, std::string replaceWord )
+int    Sed::replace( const std::string& searchWord, const std::string& replaceWord )
 {
     std::ifstream   ifs(_inFile.c_str());
     std::ofstream   ofs(_outFile.c_str());
     std::string     line;
-    int             pos;
+    std::size_t     pos;
 
     if (ifs.is_open() && ofs.is_open())
     {
-        std::cout << "File is accepted. "; \
-        std::cout << "Replacement process." << std::endl;
+        if (ifs.peek() == EOF)
+        {
+            std::cout << "File is empty" << std::endl;
+            ifs.close();
+            ofs.close();
+            return (1);
+        }
         while (std::getline(ifs, line))
         {
             pos = line.find(searchWord);
             while (pos != std::string::npos)
-                // replace
+            {
+                line.erase(pos, searchWord.length());
+                line.insert(pos, replaceWord);
+                pos = line.find(searchWord, pos + replaceWord.length());
+            }
             ofs << line << std::endl;
         }
         ifs.close();
@@ -35,10 +43,12 @@ void    Sed::replace( std::string searchWord, std::string replaceWord )
     else
     {
         std::cerr << "error: cannot read a file "  << "[" << _inFile << "]" << std::endl;
-        return;
+        return (1);
     }
+    return (0);
 }
 
 Sed::~Sed( void ){
+    std::cout << "deconstructor called" << std::endl;
     return ; 
 }

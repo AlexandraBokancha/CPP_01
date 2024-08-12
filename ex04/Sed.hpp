@@ -16,7 +16,7 @@ class   Sed{
         Sed( std::string filename );
         ~Sed();
 
-        void    replace( std::string s1, std::string s2 );
+        int    replace( const std::string& s1, const std::string& s2 );
 };
 
 #endif
