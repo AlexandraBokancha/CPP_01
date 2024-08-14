@@ -17,20 +17,16 @@ int    Sed::replace( const std::string& searchWord, const std::string& replaceWo
     std::string     line;
     std::size_t     pos;
 
-    if (ifs.is_open() && ofs.is_open())
-    {
-        if (ifs.peek() == EOF)
-        {
+    if (ifs.is_open() && ofs.is_open()){
+        if (ifs.peek() == EOF){
             std::cout << "File is empty" << std::endl;
             ifs.close();
             ofs.close();
             return (1);
         }
-        while (std::getline(ifs, line))
-        {
+        while (std::getline(ifs, line)){
             pos = line.find(searchWord);
-            while (pos != std::string::npos)
-            {
+            while (pos != std::string::npos){
                 line.erase(pos, searchWord.length());
                 line.insert(pos, replaceWord);
                 pos = line.find(searchWord, pos + replaceWord.length());
@@ -40,8 +36,7 @@ int    Sed::replace( const std::string& searchWord, const std::string& replaceWo
         ifs.close();
         ofs.close();
     }
-    else
-    {
+    else{
         std::cerr << "error: cannot read a file "  << "[" << _inFile << "]" << std::endl;
         return (1);
     }
